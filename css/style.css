@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.header-text {
+  color: #31a5ac;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+}
+/*====== text style =======
+=========================== */
+h1,
+h4,
+p {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.input-section {
+  background-color: #f8f8f8;
+}
+/*==== create a custom button ====
+==================================*/
+.btn-custom {
+  background-color: #59a5ff;
+  color: #f8f8f8;
+  font-weight: bold;
+}

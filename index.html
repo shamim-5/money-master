@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Money Master</title>
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+   <header>
+      <!-- header title  -->
+      <div class="header-text">
+         <h1>Money Master</h1>
+      </div>
+   </header>
+   <main>
+      <section class="container pt-4">
+         <div class="row  gx-md-5">
+            <div class="col-lg-6 col-sm-12">
+               <img class="w-100" src="images/money-1.jpg" alt="">
+            </div>
+            <!-- input section start here  -->
+            <div class="input-section col-lg-6 col-sm-12 pt-3 px-5">
+               <h4>Income</h4>
+               <div class="input-group mb-2">
+                  <label class="input-group-text border-0 col-4 bg-light d-flex justify-content-end" for="inputGroupSelect01">Income:</label>
+                  <input type="text" class="form-control input-group-text border-0 col-8" placeholder="">
+               </div>
+               <!--calculate total expenses  -->
+               <h4>Expenses</h4>
+               <div class="input-group mb-2">
+                  <label class="input-group-text border-0 col-4 bg-light d-flex justify-content-end" for="inputGroupSelect01">Food:</label>
+                  <input type="text" class="form-control input-group-text border-0 col-8" placeholder="">
+               </div>
+               <div class="input-group mb-2">
+                  <label class="input-group-text border-0 col-4 bg-light d-flex justify-content-end" for="inputGroupSelect01">Rent:</label>
+                  <input type="text" class="form-control input-group-text border-0 col-8" placeholder="">
+               </div>
+               <div class="input-group mb-2">
+                  <label class="input-group-text border-0 col-4 bg-light d-flex justify-content-end" for="inputGroupSelect01">Clothes:</label>
+                  <input type="text" class="form-control input-group-text border-0 col-8" placeholder="">
+               </div>
+               <!-- calculate total expenses and balance  -->
+               <div class="d-flex justify-content-center"><button class="btn btn-custom my-2">Calculate</button></div>
+               <h4>Total Expenses: 5500</h4>
+               <h4>Balance: 4500</h4>
+               <!-- calculate savings with percent  -->
+               <div class="row">
+                  <div class="input-group">
+                     <label class="input-group-text border-0 col-4 bg-light d-flex justify-content-end" for="inputGroupSelect01">Save:</label>
+                     <input type="text" class="form-control input-group-text border-0 col-6" placeholder="">
+                     <label class="input-group-text border-0 col-2 bg-light d-flex justify-content-end" for="inputGroupSelect01">%</label>
+                     <button class="btn btn-custom rounded">Save</button>
+                  </div>
+               </div>
+               <!-- saving amount and total budget  -->
+               <h4>Saving Amount: 2000</h4>
+               <h4>Remaining Balance: 2500</h4>
+            </div>
+      </section>
+   </main>
+
+
+
+
+
+
+   <script src="js/bootstrap.bundle.min.js"></script>
+   <script src="js/app.js"></script>
+</body>
+
+</html>
