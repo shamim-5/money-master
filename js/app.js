@@ -1,4 +1,4 @@
-//total cost
+//calculate total cost
 function getTotalCost() {
   const foodCost = getAmountSingle("food");
   const rentCost = getAmountSingle("rent");
@@ -11,7 +11,7 @@ function getTotalCost() {
   console.log(costTotalAmount);
 }
 
-// cost common function
+// common function
 function getAmountSingle(amount) {
   const itemCost = document.getElementById(amount + "-cost");
   const itemCostAmount = parseFloat(itemCost.value);
@@ -32,18 +32,21 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
   const balanceTotal = document.getElementById("balance-total");
   balanceTotal.innerText = getTotal("income") - getTotalCost();
   getTotalCost();
-  console.log(getTotalCost());
 });
-
-// save button event handler
-document.getElementById("credit-btn").addEventListener("click", function () {
+// calculate savings amount
+function getTotalSavings() {
   const percentTotalAmount = getTotal("percent") / 100;
-  const creditTotal = document.getElementById("credit-total");
-  const creditTotalAmount = getAmountTotal("credit");
-  const remainingTotal = document.getElementById("remaining-total");
-  // const remainingTotalAmount = getAmountTotal("remaining");
   const incomeTotalAmount = getTotal("income");
+  const savingsTotal = document.getElementById("savings-total");
+  savingsTotal.innerText = percentTotalAmount * incomeTotalAmount;
+  return percentTotalAmount * incomeTotalAmount;
+}
+// save button event handler
+document.getElementById("savings-btn").addEventListener("click", function () {
+  const savingsTotalAmount = getAmountTotal("savings");
+  const balanceTotalAmount = getAmountTotal("balance");
+  const remainingTotal = document.getElementById("remaining-total");
 
-  creditTotal.innerText = percentTotalAmount * incomeTotalAmount;
-  remainingTotal.innerText = incomeTotalAmount - creditTotalAmount;
+  remainingTotal.innerText = balanceTotalAmount - getTotalSavings();
+  getTotalSavings();
 });
