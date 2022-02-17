@@ -37,17 +37,11 @@ function getTotalCost() {
 }
 // calculate savings amount
 function getTotalSavings() {
-  const percentTotalAmount = getTotal("percent") / 100;
+  const percentAmount = getTotal("percent");
+  const percentTotalAmount = percentAmount / 100;
   const incomeTotalAmount = getTotal("income");
-  const savingsTotal = document.getElementById("savings-total");
-  const savingsTotalAmount = getAmountTotal("savings");
-
-  if (getAmountTotal("balance") > savingsTotalAmount) {
-    savingsTotal.innerText = percentTotalAmount * incomeTotalAmount;
-    return percentTotalAmount * incomeTotalAmount;
-  } else {
-    alert("Savings amount must be small than balance");
-  }
+  const amountSaved = percentTotalAmount * incomeTotalAmount;
+  return amountSaved;
 }
 // calculate button event handler
 document.getElementById("calculate-btn").addEventListener("click", function () {
@@ -63,12 +57,21 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
 // save button event handler
 document.getElementById("savings-btn").addEventListener("click", function () {
   const balanceTotalAmount = getAmountTotal("balance");
+  const savingAmount = getAmountTotal("savings");
   const remainingTotal = document.getElementById("remaining-total");
+  const savingTotalAmount = document.getElementById("savings-total");
+  const percentTotalAmount = document.getElementById("percent-total");
 
-  if (balanceTotalAmount > getAmountTotal("savings")) {
-    remainingTotal.innerText = balanceTotalAmount - getTotalSavings();
-    getTotalSavings();
-  } else if (isNaN(remainingTotal) || balanceTotalAmount < getAmountTotal("savings")) {
-    remainingTotal.innerText = "00";
+  if (savingAmount < balanceTotalAmount) {
+    remainingTotal.innerText = getAmountTotal("balance") - getTotalSavings();
+    savingTotalAmount.innerText = getTotalSavings();
+    if (remainingTotal.innerText < 0 || savingAmount > balanceTotalAmount) {
+      alert("Percent of shaving moro than  balance !");
+      remainingTotal.innerText = 0;
+      savingTotalAmount.innerText = 0;
+      percentTotalAmount.value = "";
+    }
+  } else if (isNaN()) {
+    alert("Process wrong ! Please try again.");
   }
 });
