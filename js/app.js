@@ -16,7 +16,7 @@ function getTotal(amount) {
   if (totalAmount > 0) {
     return totalAmount;
   } else if (isNaN()) {
-    alert("Please put only number !");
+    alert("Please put valid number !");
   }
 }
 function getAmountTotal(amount) {
@@ -32,6 +32,7 @@ function getTotalCost() {
   const costTotalAmount = foodCost + rentCost + clothsCost;
   const expensesTotal = document.getElementById("expenses-total");
   expensesTotal.innerText = costTotalAmount;
+
   return costTotalAmount;
 }
 // calculate savings amount
@@ -39,22 +40,35 @@ function getTotalSavings() {
   const percentTotalAmount = getTotal("percent") / 100;
   const incomeTotalAmount = getTotal("income");
   const savingsTotal = document.getElementById("savings-total");
-  savingsTotal.innerText = percentTotalAmount * incomeTotalAmount;
-  return percentTotalAmount * incomeTotalAmount;
+  const savingsTotalAmount = getAmountTotal("savings");
+
+  if (getAmountTotal("balance") > savingsTotalAmount) {
+    savingsTotal.innerText = percentTotalAmount * incomeTotalAmount;
+    return percentTotalAmount * incomeTotalAmount;
+  } else {
+    alert("Savings amount must be small than balance");
+  }
 }
 // calculate button event handler
 document.getElementById("calculate-btn").addEventListener("click", function () {
   const balanceTotal = document.getElementById("balance-total");
 
-  balanceTotal.innerText = getTotal("income") - getTotalCost();
-  getTotalCost();
+  if (getTotal("income") >= getTotalCost()) {
+    balanceTotal.innerText = getTotal("income") - getTotalCost();
+    getTotalCost();
+  } else {
+    alert("Your expenses must be lowest than your income");
+  }
 });
 // save button event handler
 document.getElementById("savings-btn").addEventListener("click", function () {
-  const savingsTotalAmount = getAmountTotal("savings");
   const balanceTotalAmount = getAmountTotal("balance");
   const remainingTotal = document.getElementById("remaining-total");
 
-  remainingTotal.innerText = balanceTotalAmount - getTotalSavings();
-  getTotalSavings();
+  if (balanceTotalAmount > getAmountTotal("savings")) {
+    remainingTotal.innerText = balanceTotalAmount - getTotalSavings();
+    getTotalSavings();
+  } else if (isNaN(remainingTotal) || balanceTotalAmount < getAmountTotal("savings")) {
+    remainingTotal.innerText = "00";
+  }
 });
