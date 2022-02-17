@@ -1,51 +1,49 @@
-document.getElementById("calculate-btn").addEventListener("click", function () {
-  // total cost
-  const foodCost = document.getElementById("food-cost");
-  const foodCostAmount = parseFloat(foodCost.value);
-
-  const rentCost = document.getElementById("rent-cost");
-  const rentCostAmount = parseFloat(rentCost.value);
-
-  const clothsCost = document.getElementById("clothes-cost");
-  const clothsCostAmount = parseFloat(clothsCost.value);
-
-  const costTotalAmount = foodCostAmount + rentCostAmount + clothsCostAmount;
-  // total expenses
+//total cost
+function getTotalCost() {
+  const foodCost = getAmountSingle("food");
+  const rentCost = getAmountSingle("rent");
+  const clothsCost = getAmountSingle("clothes");
+  const costTotalAmount = foodCost + rentCost + clothsCost;
   const expensesTotal = document.getElementById("expenses-total");
-  const expensesTotalAmount = parseFloat(expensesTotal.innerText);
-  expensesTotal.innerText = expensesTotalAmount + costTotalAmount;
 
-  // income total
-  const incomeTotal = document.getElementById("income-total");
-  const incomeTotalAmount = parseFloat(incomeTotal.value);
-  // total balance
+  expensesTotal.innerText = costTotalAmount;
+  return costTotalAmount;
+  console.log(costTotalAmount);
+}
+
+// cost common function
+function getAmountSingle(amount) {
+  const itemCost = document.getElementById(amount + "-cost");
+  const itemCostAmount = parseFloat(itemCost.value);
+  return itemCostAmount;
+}
+function getAmountTotal(amount) {
+  const catchAmount = document.getElementById(amount + "-total");
+  const totalAmount = parseFloat(catchAmount.innerText);
+  return totalAmount;
+}
+function getTotal(amount) {
+  const total = document.getElementById(amount + "-total");
+  const totalAmount = parseFloat(total.value);
+  return totalAmount;
+}
+// calculate button event handler
+document.getElementById("calculate-btn").addEventListener("click", function () {
   const balanceTotal = document.getElementById("balance-total");
-  const balanceTotalAmount = parseFloat(balanceTotal.innerText);
-  balanceTotal.innerText = incomeTotalAmount - expensesTotalAmount;
+  balanceTotal.innerText = getTotal("income") - getTotalCost();
+  getTotalCost();
+  console.log(getTotalCost());
 });
 
-// savings button event handler
-
+// save button event handler
 document.getElementById("credit-btn").addEventListener("click", function () {
-  // credit percent
-  const creditPercent = document.getElementById("credit-percent");
-  const creditPercentAmount = parseFloat(creditPercent.value) / 100;
-
-  // income total
-
-  const incomeTotal = document.getElementById("income-total");
-  const incomeTotalAmount = parseFloat(incomeTotal.value);
-  // saving amount
+  const percentTotalAmount = getTotal("percent") / 100;
   const creditTotal = document.getElementById("credit-total");
-  const creditTotalAmount = parseFloat(creditTotal.innerText);
-  // remaing balance
-  const balanceLeft = document.getElementById("balance-left");
-  const balanceLeftAmount = parseFloat(balanceLeft.innerText);
-  // set saving
-  creditTotal.innerText = incomeTotalAmount * creditPercentAmount;
-  //balance total
-  const balanceTotal = document.getElementById("balance-total");
-  const balanceTotalAmount = parseFloat(balanceTotal.innerText);
-  // set remaining
-  balanceLeft.innerText = balanceTotalAmount - creditTotalAmount;
+  const creditTotalAmount = getAmountTotal("credit");
+  const remainingTotal = document.getElementById("remaining-total");
+  // const remainingTotalAmount = getAmountTotal("remaining");
+  const incomeTotalAmount = getTotal("income");
+
+  creditTotal.innerText = percentTotalAmount * incomeTotalAmount;
+  remainingTotal.innerText = incomeTotalAmount - creditTotalAmount;
 });
