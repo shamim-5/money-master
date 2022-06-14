@@ -1,5 +1,5 @@
 # Money Master
 
-## [Live-Website: https://classroom.github.com/a/zFLvvYwR](https://classroom.github.com/a/zFLvvYwR)
+## [Live-Website: https://shamim-5.github.io/money-master/](https://shamim-5.github.io/money-master/)
 
 
