@@ -1,6 +1,5 @@
-# Money Master Assignment
+# Money Master
 
-## [https://classroom.github.com/a/zFLvvYwR](https://classroom.github.com/a/zFLvvYwR)
+## [Live-Website: https://classroom.github.com/a/zFLvvYwR](https://classroom.github.com/a/zFLvvYwR)
 
-### Private Repo Link: [https://classroom.github.com/a/zFLvvYwR](https://classroom.github.com/a/zFLvvYwR)
-# money-master-mss38
+
